@@ -1,32 +1,34 @@
-/* ===== variáveis do tema (mesma paleta da Calculadora de Dias Úteis) ===== */
+/* ===== variáveis do tema =====
+   Claro: fundo branco, destaques em vermelho, texto em cinza.
+   Escuro: fundo cinza-grafite neutro, mesmos destaques em vermelho (mais vivo). */
 :root{
-  --bg-pagina:linear-gradient(160deg,#eef2f9 0%,#ffffff 55%,#eef2f9 100%);
+  --bg-pagina:#ffffff;
   --bg-cartao:#ffffff;
-  --sombra-cartao:rgba(20,35,90,0.15);
-  --borda-topo-cartao:#16215c;
-  --cor-titulo:#16215c;
-  --cor-label:#3a4a6b;
-  --cor-texto:#243352;
-  --bg-input:#f8faff;
-  --borda-input:#d5dcec;
-  --foco-borda:#2f6fce;
-  --foco-sombra:rgba(47,111,206,0.2);
-  --bg-icone:#f8faff;
-  --borda-icone:#d5dcec;
-  --bg-icone-hover:#e8effc;
-  --borda-icone-hover:#2f6fce;
+  --sombra-cartao:rgba(60,60,70,0.14);
+  --borda-topo-cartao:#d71920;
+  --cor-titulo:#3a3a40;
+  --cor-label:#66666f;
+  --cor-texto:#4a4a52;
+  --bg-input:#fafafa;
+  --borda-input:#dcdce0;
+  --foco-borda:#d71920;
+  --foco-sombra:rgba(215,25,32,0.18);
+  --bg-icone:#fafafa;
+  --borda-icone:#dcdce0;
+  --bg-icone-hover:#fdeeee;
+  --borda-icone-hover:#d71920;
   --cor-copiado:#28a745;
-  --tab-inativa:#7688a8;
-  --tab-ativa:#16215c;
-  --tab-borda:#e3e8f2;
-  --tab-borda-ativa:#2f6fce;
-  --btn-calcular-de:#1c4e9e;
-  --btn-calcular-ate:#2f6fce;
-  --btn-limpar-de:#a8181f;
-  --btn-limpar-ate:#e2231a;
+  --tab-inativa:#76767f;
+  --tab-ativa:#d71920;
+  --tab-borda:#ececef;
+  --tab-borda-ativa:#d71920;
+  --btn-calcular-de:#b8141b;
+  --btn-calcular-ate:#e02a30;
+  --btn-limpar-de:#8f1218;
+  --btn-limpar-ate:#c0182b;
   --cor-erro:#c0182b;
-  --cor-footer:#5a6a8c;
-  --faixa:linear-gradient(90deg,#e2231a 0%,#7a2f8a 50%,#16215c 100%);
+  --cor-footer:#76767f;
+  --faixa:linear-gradient(90deg,#d71920 0%,#76767f 100%);
 
   --radius-lg:14px;
   --radius-sm:6px;
@@ -35,32 +37,32 @@
 }
 
 :root[data-theme="escuro"]{
-  --bg-pagina:linear-gradient(160deg,#0a0f1c 0%,#141a2b 55%,#0a0f1c 100%);
-  --bg-cartao:#161d30;
+  --bg-pagina:linear-gradient(160deg,#101012 0%,#18181b 55%,#101012 100%);
+  --bg-cartao:#1d1d21;
   --sombra-cartao:rgba(0,0,0,0.5);
-  --borda-topo-cartao:#4c7ef0;
-  --cor-titulo:#dbe4ff;
-  --cor-label:#a7b3d1;
-  --cor-texto:#e6ecff;
-  --bg-input:#0f1526;
-  --borda-input:#2b3554;
-  --foco-borda:#4c7ef0;
-  --foco-sombra:rgba(76,126,240,0.3);
-  --bg-icone:#0f1526;
-  --borda-icone:#2b3554;
-  --bg-icone-hover:#1c2742;
-  --borda-icone-hover:#4c7ef0;
-  --tab-inativa:#6b7aa0;
-  --tab-ativa:#dbe4ff;
-  --tab-borda:#2b3554;
-  --tab-borda-ativa:#4c7ef0;
-  --btn-calcular-de:#1c4e9e;
-  --btn-calcular-ate:#3d7bdb;
+  --borda-topo-cartao:#ff4b52;
+  --cor-titulo:#ececf0;
+  --cor-label:#a9a9b3;
+  --cor-texto:#d6d6dc;
+  --bg-input:#131316;
+  --borda-input:#36363d;
+  --foco-borda:#ff5a60;
+  --foco-sombra:rgba(255,90,96,0.3);
+  --bg-icone:#131316;
+  --borda-icone:#36363d;
+  --bg-icone-hover:#2b1b1d;
+  --borda-icone-hover:#ff5a60;
+  --tab-inativa:#8d8d98;
+  --tab-ativa:#ff6b70;
+  --tab-borda:#36363d;
+  --tab-borda-ativa:#ff4b52;
+  --btn-calcular-de:#b3141b;
+  --btn-calcular-ate:#e0343b;
   --btn-limpar-de:#8f1620;
   --btn-limpar-ate:#c22a26;
-  --cor-erro:#ff6b6b;
-  --cor-footer:#7c8bb0;
-  --faixa:linear-gradient(90deg,#e2231a 0%,#7a2f8a 50%,#4c7ef0 100%);
+  --cor-erro:#ff6b70;
+  --cor-footer:#8d8d98;
+  --faixa:linear-gradient(90deg,#e2231a 0%,#6b6b73 100%);
   color-scheme:dark;
 }
 
