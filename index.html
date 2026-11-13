@@ -27,6 +27,7 @@
     <div class="actions">
       <input id="search" class="search" type="search" placeholder="Buscar em todas as seções ( / )" aria-label="Buscar textos">
       <button id="editToggle" class="btn" aria-pressed="false">Editar</button>
+      <button type="button" class="btn-tema" id="helpBtn" title="Como usar e como funciona o backup" aria-label="Ajuda: como usar e como funciona o backup">?</button>
       <button type="button" class="btn-tema" id="btnTema" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">🌙</button>
     </div>
   </header>
@@ -83,6 +84,39 @@
     <div class="dlg-actions">
       <button type="button" class="btn" id="tabCancel">Cancelar</button>
       <button type="submit" class="btn primary">Salvar</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="helpDlg">
+  <form method="dialog" class="ajuda">
+    <h2>Como usar</h2>
+
+    <h3>Onde ficam os seus textos</h3>
+    <p>Neste navegador, neste computador. Não há servidor nem conta: ninguém mais vê o que você guarda, e o que você guarda aqui não aparece em outro navegador ou computador. Limpar os dados de navegação do site apaga tudo, por isso o backup é importante.</p>
+
+    <h3>Como o backup funciona</h3>
+    <ul>
+      <li>Ao clicar em <b>Concluir edição</b>, se você alterou algo, a página baixa sozinha um arquivo <code>.json</code> com todos os seus textos. Se nada mudou, não baixa nada.</li>
+      <li>Também dá para gerar o arquivo a qualquer momento em <b>Exportar backup</b>.</li>
+      <li>A faixa no rodapé avisa quando há alterações sem backup.</li>
+    </ul>
+
+    <h3>Onde o arquivo vai parar</h3>
+    <p>A página não escolhe a pasta: o navegador salva em <b>Downloads</b> (ou pergunta onde salvar, se estiver configurado assim). Depois, <b>mova o arquivo para um local seguro</b>, de preferência uma pasta sincronizada, como o OneDrive. Se você não guardar o arquivo, não há como recuperar os textos.</p>
+
+    <h3>Entrou alguém novo no setor?</h3>
+    <ol>
+      <li>Um colega exporta o backup dele e envia o arquivo.</li>
+      <li>A pessoa nova abre esta página e clica em <b>Importar backup</b>.</li>
+      <li>Pronto: ela passa a ter uma cópia dos textos do colega e pode editar à vontade, sem afetar o original.</li>
+    </ol>
+
+    <h3>Cuidado ao importar</h3>
+    <p><b>Importar substitui tudo</b> o que existe hoje na página pelo conteúdo do arquivo. Se você já tem textos seus, exporte um backup antes.</p>
+
+    <div class="dlg-actions">
+      <button type="submit" class="btn primary">Entendi</button>
     </div>
   </form>
 </dialog>

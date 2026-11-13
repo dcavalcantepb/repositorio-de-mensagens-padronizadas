@@ -53,17 +53,25 @@
     try { localStorage.setItem(META_KEY, JSON.stringify({ em: new Date().toISOString(), assinatura: assinatura() })); } catch (e) {}
     renderBackupStatus();
   }
+  // Há algo a salvar? Sem backup registrado só conta se já existir conteúdo
+  // (a ferramenta em branco não precisa de backup).
+  function backupPendente(){
+    const meta = lerBackupMeta();
+    return meta ? meta.assinatura !== assinatura() : state.tabs.length > 0;
+  }
   function renderBackupStatus(){
     const meta = lerBackupMeta();
     const el = $('backupStatus'), btn = $('exportBtn');
     if (!el || !btn) return;
     let pendente, msg;
     if (!meta) {
-      pendente = true;
-      msg = '⚠ Nenhum backup registrado ainda. Exporte um e guarde em local seguro.';
+      pendente = backupPendente();
+      msg = pendente
+        ? '⚠ Nenhum backup registrado ainda. Exporte um e guarde em local seguro.'
+        : 'Nenhum backup ainda — a ferramenta está em branco.';
     } else {
       const quando = new Date(meta.em).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
-      pendente = meta.assinatura !== assinatura();
+      pendente = backupPendente();
       msg = pendente
         ? '⚠ Há alterações desde o último backup (' + quando + '). Exporte um novo e guarde em local seguro.'
         : 'Backup em dia — último em ' + quando + '.';
@@ -290,6 +298,11 @@
     b.setAttribute('aria-pressed', String(editMode));
     b.textContent = editMode ? 'Concluir edição' : 'Editar';
     render();
+    // Ao concluir a edição, se houve alterações, o backup já é baixado.
+    if (!editMode && backupPendente()) {
+      exportarBackup();
+      toast('Edição concluída. Backup baixado: guarde o arquivo em local seguro.');
+    }
   });
 
   $('search').addEventListener('input', (e) => { query = e.target.value.trim(); render(); });
@@ -300,7 +313,7 @@
   });
 
   // Backup
-  $('exportBtn').addEventListener('click', () => {
+  function exportarBackup(){
     const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
     const a = document.createElement('a');
     const d = new Date();
@@ -310,8 +323,12 @@
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
     marcarBackupFeito();
+  }
+  $('exportBtn').addEventListener('click', () => {
+    exportarBackup();
     toast('Backup exportado. Guarde o arquivo em local seguro.');
   });
+  $('helpBtn').addEventListener('click', () => $('helpDlg').showModal());
   $('importBtn').addEventListener('click', () => $('importFile').click());
   $('importFile').addEventListener('change', async (e) => {
     const file = e.target.files[0]; e.target.value = '';

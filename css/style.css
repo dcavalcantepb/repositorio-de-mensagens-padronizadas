@@ -209,3 +209,13 @@ footer{margin-top:40px; color:var(--cor-footer); font-size:.9rem; display:flex; 
 
 /* rodapé */
 .creditos{margin-top:22px; text-align:center; font-size:.9rem; color:var(--cor-footer); transition:color .3s ease}
+
+/* diálogo de ajuda */
+#helpDlg{width:min(620px, calc(100% - 32px)); max-height:calc(100vh - 48px); overflow:auto}
+.ajuda{line-height:1.5; font-size:.95rem; gap:6px}
+.ajuda h3{margin:12px 0 2px; font-size:1rem; color:var(--cor-titulo)}
+.ajuda p, .ajuda ul, .ajuda ol{margin:0}
+.ajuda ul, .ajuda ol{padding-left:22px}
+.ajuda li + li{margin-top:4px}
+.ajuda code{background:var(--bg-linha, var(--bg-input)); padding:1px 5px; border-radius:4px; font-size:.9em}
+.ajuda .dlg-actions{margin-top:14px}

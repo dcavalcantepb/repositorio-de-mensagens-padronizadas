@@ -2,7 +2,7 @@
 
 Ferramenta para guardar e copiar mensagens padronizadas (e-mails, respostas, avisos etc.) com um clique. Abre em branco: cada pessoa cria as próprias seções e mensagens.
 
-> Status: em desenvolvimento. As funcionalidades planejadas abaixo ainda não foram implementadas.
+> Status: em uso. Backup manual com download automático ao concluir a edição, e botão de ajuda (?) dentro da página.
 
 ## Estrutura
 
@@ -23,15 +23,17 @@ Os dados ficam no `localStorage` do navegador, com chaves próprias (`mensagens-
 - O **backup** (arquivo JSON) é o meio de transferência: quem chega à equipe importa o backup de um colega e passa a ter o seu próprio conjunto, que pode ajustar e exportar.
 - Modelo simples, de propósito. Não há servidor nem login.
 
-## Funcionalidades planejadas
+## Backup
 
-1. **Backup automático a cada edição.** A pessoa escolhe uma vez um arquivo de backup (de preferência numa pasta sincronizada, como a do OneDrive) e a página o sobrescreve a cada alteração, usando a File System Access API (Chrome/Edge). A página não acessa o serviço de nuvem: quem sincroniza é o aplicativo instalado no computador. O botão manual de exportar continua existindo.
-2. **Botão de orientação**, uma espécie de README dentro da página: onde as mensagens ficam guardadas, como exportar, como importar (importar substitui tudo) e o passo a passo de quem chega à equipe.
+- Ao clicar em **Concluir edição**, se houve alteração desde o último backup, a página baixa sozinha o arquivo `.json`. Sem alteração, não baixa nada.
+- **Exportar backup** gera o arquivo a qualquer momento; **Importar backup** substitui tudo pelo conteúdo do arquivo.
+- Uma faixa no rodapé avisa quando há alterações sem backup.
+- A página não escolhe a pasta: o navegador salva em Downloads (ou pergunta, conforme a configuração). A pessoa deve mover o arquivo para um local seguro, de preferência uma pasta sincronizada.
+- O botão **?** no topo abre a orientação de uso (onde os dados ficam, como exportar e importar, passo a passo de quem chega à equipe).
 
-## A testar antes de prometer à equipe
+## Decisão: sem backup automático em arquivo
 
-- Se a autorização do arquivo de backup fica realmente "uma vez só" nos navegadores da equipe, ou se o navegador pede reconfirmação a cada sessão.
-- Se o recurso funciona com a página aberta direto do disco (`file://`).
+Foi testada a gravação automática num arquivo escolhido uma vez (File System Access API, Chrome). A permissão volta a ser pedida ao reabrir a aba, então o ganho sobre o backup manual não compensa a complexidade. Descartado.
 
 ## Possibilidade futura (não decidida)
 
