@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Repositório de Mensagens Padronizadas</title>
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
+<script>
+(function(){
+  var salvo = localStorage.getItem("tema");
+  var tema = salvo || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "escuro" : "claro");
+  document.documentElement.setAttribute("data-theme", tema);
+})();
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Repositório de Mensagens Padronizadas</h1>
+      <p class="sub">Guarde e copie suas mensagens padronizadas com um clique.</p>
+    </div>
+    <div class="actions">
+      <input id="search" class="search" type="search" placeholder="Buscar em todas as seções ( / )" aria-label="Buscar textos">
+      <button id="editToggle" class="btn" aria-pressed="false">Editar</button>
+      <button type="button" class="btn-tema" id="btnTema" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">🌙</button>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Seções"></nav>
+  <div class="tabtools" id="tabtools" hidden>
+    <button class="btn" data-act="tab-left">Mover seção para a esquerda</button>
+    <button class="btn" data-act="tab-right">Mover seção para a direita</button>
+    <button class="btn" data-act="tab-rename">Renomear seção</button>
+    <button class="btn danger" data-act="tab-delete">Excluir seção</button>
+  </div>
+
+  <main id="grid" class="grid" aria-live="polite"></main>
+  <div id="empty" class="empty" hidden></div>
+
+  <footer>
+    <span>Os textos ficam salvos neste navegador.</span>
+    <button class="btn" id="exportBtn">Exportar backup</button>
+    <button class="btn" id="importBtn">Importar backup</button>
+    <p class="backup-status" id="backupStatus" role="status"></p>
+    <input type="file" id="importFile" accept="application/json,.json" class="visually-hidden">
+  </footer>
+
+  <div class="creditos">Feito com ☕</div>
+</div>
+
+<dialog id="itemDlg">
+  <form method="dialog" id="itemForm">
+    <h2 id="itemTitle">Novo texto</h2>
+    <label class="f">Nome do botão
+      <input id="itemLabel" required maxlength="80" autocomplete="off">
+    </label>
+    <label class="f">Texto a copiar
+      <textarea id="itemText" required></textarea>
+    </label>
+    <label class="f">Seção
+      <select id="itemTab"></select>
+    </label>
+    <div class="dlg-actions">
+      <button type="button" class="btn danger" id="itemDelete">Excluir</button>
+      <span class="spacer"></span>
+      <button type="button" class="btn" id="itemCancel">Cancelar</button>
+      <button type="submit" class="btn primary">Salvar</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="tabDlg">
+  <form method="dialog" id="tabForm">
+    <h2 id="tabTitle">Nova seção</h2>
+    <label class="f">Nome da seção
+      <input id="tabName" required maxlength="40" autocomplete="off">
+    </label>
+    <div class="dlg-actions">
+      <button type="button" class="btn" id="tabCancel">Cancelar</button>
+      <button type="submit" class="btn primary">Salvar</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status"></div>
+<div class="faixa-decorativa"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
